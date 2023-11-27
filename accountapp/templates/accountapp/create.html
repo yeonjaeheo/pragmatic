@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
 <div style="text-align: center">
-    <form action="{% url 'accountapp:create' %}" method="POST">
+    <form action="{% url 'accountapp:create' %}" method="post">
         {% csrf_token %}
-        {{ form }}
+        {% bootstrap_form form %}
         <input type="submit" class="btn btn-primary">
     </form>
 </div>
