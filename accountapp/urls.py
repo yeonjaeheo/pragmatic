@@ -4,9 +4,8 @@ from accountapp.views import AccountCreateView, hello_world, AccountDetailView, 
 
 app_name = "accountapp"
 
-# "accountapp:hello_world"
-
 urlpatterns = [
+    # "accountapp:hello_world"
     path('hello_world/', hello_world, name='hello_world'),
     
     path('login/', LoginView.as_view(template_name='accountapp/login.html'), name='login'),

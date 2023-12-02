@@ -13,7 +13,7 @@ class ProfileCreateView(CreateView):
     form_class = ProfileCreationForm
     template_name = 'profileapp/create.html'
     
-    
+    #form 의 user 를 view 에서 저장해준다.
     def form_valid(self, form):
         temp_profile = form.save(commit=False)
         temp_profile.user = self.request.user
@@ -36,3 +36,4 @@ class ProfileUpdateView(UpdateView):
     
     def get_success_url(self):  
         return reverse_lazy('accountapp:detail', kwargs={'pk' : self.object.user.pk})
+    
