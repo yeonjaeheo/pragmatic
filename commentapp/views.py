@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.urls import reverse
 
-from django.views.generic import CreateView
+from django.utils.decorators import method_decorator
+from django.views.generic import CreateView, DeleteView
 from articleapp.models import Article
+from commentapp.decolator import comment_ownership_required
 from commentapp.forms import CommentCreationForm
 
 from commentapp.models import Comment
@@ -27,3 +29,16 @@ class CommentCreateView(CreateView):
     
     def get_success_url(self):
         return reverse('articleapp:detail', kwargs={'pk': self.object.article.pk})
+    
+
+#method_decorator 을 추가함으로써 logout 시 delete 버튼이 보이지 않게된다.
+@method_decorator(comment_ownership_required, 'get')
+@method_decorator(comment_ownership_required, 'post')
+class CommentDeleteView(DeleteView):
+    model = Comment
+    context_object_name = 'target_comment'
+    template_name = 'commentapp/delete.html'
+    
+    def get_success_url(self):
+        return reverse('articleapp:detail', kwargs={'pk': self.object.article.pk})
+    
