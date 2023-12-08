@@ -2,7 +2,7 @@ FROM python:3.9.0
 
 WORKDIR /home/
 
-RUN git clone https://github.com/yeonjaeheo/pinterest.git
+RUN git clone https://github.com/yeonjaeheo/pragmatic.git
 
 WORKDIR /home/pragmatic/
 
