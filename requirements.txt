@@ -7,3 +7,4 @@ packaging==23.2
 Pillow==10.1.0
 soupsieve==2.5
 sqlparse==0.4.4
+wheel==0.41.2
